@@ -1,60 +1,90 @@
-@import url('https://fonts.google.com/specimen/Barlow+Semi+Condensed');
+@import url("https://fonts.google.com/specimen/Barlow+Semi+Condensed");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Barlow Semi Condensed', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#main-container{
-    display: grid;
-    grid-template-columns: repeat 3fr;
+#main-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  height: 100vh;
 }
 
-#first-item{
-    background-color: purple;
-    padding: 10px;
+/* backgorund and color */
+
+#image-1 {
+  background-color: hsl(263, 55%, 52%);
 }
 
-#second-item-right{
-    background-color: grey;
+#image-2 {
+  background-color: hsl(217, 19%, 35%);
 }
 
-#third-item-left{
-    background-color: white;
+#image-5 {
+  background-color: hsl(219, 29%, 14%);
+  color: white;
 }
 
-#fourth-middle{
-    background-color: blue;
+/* media query for mobile */
+
+@media (max-width: 480px) {
+  #main-container {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonial {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    grid-column: 1 / -1; /* Spans all columns within the grid item */
+    border-radius: 10px;
+  }
+
+  .testimonial {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
 
-#fifth-item-right{
-    background-color: white;
-}
+/* media query for desktop */
+@media (min-width: 481px) {
+  /* TODO */
+  .testimonial {
+    grid-column: span 1; /* Each testimonial occupies 1 column by default */
+    grid-row: span 1; /* Each testimonial occupies 1 row by default */
+    padding: 20px; /* Add padding around each testimonial */
+    border: 1px solid #ccc; /* Optional border for visualization */
+    border-radius: 20px;
+  }
+  /* Define grid item spans for specific testimonials */
+  /* notations found for refering to each child */
 
-/* mobile */
+  .testimonial:nth-child(1) {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
 
-@media only screen and (max-width: 375px){
-    #first-item{
-        display: grid; 
+  .testimonial:nth-child(2) {
+    grid-column: span 1;
+    grid-row: span 1;
+
+    .testimonial:nth-child(3) {
+      grid-column: span 1;
+      grid-row: span 3;
     }
+
+    .testimonial:nth-child(4) {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
+
+    .testimonial:nth-child(5) {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+  }
 }
